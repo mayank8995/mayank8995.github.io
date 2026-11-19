@@ -1,0 +1,26 @@
+---
+layout: base.njk
+---
+{%- from "icons.njk" import icon, projectLinks -%}
+    <article class="case">
+      <div class="wrap">
+        <a class="back" href="/#work">{{ icon("back") | safe }} All projects</a>
+        
+        <p class="project-meta">{% if role %}{{ role }}{% endif %}{% if role and year %} · {% endif %}{% if year %}{{ year }}{% endif %}</p>
+        <h1>{{ title }}</h1>
+        <p class="lede">{{ description }}</p>
+        {%- if impact %}
+        <div class="impact big">
+          {%- for im in impact %}<div><b>{{ im.value }}</b><span>{{ im.label }}</span></div>{% endfor %}
+        </div>
+        {%- endif %}
+        <div class="tags">{% for t in tags %}<span class="tag">{{ t }}</span>{% endfor %}</div>
+        {{ projectLinks({ live: live, code: code }) }}
+        {%- if image %}
+        <div class="case-hero"><img src="{{ image }}" alt="{{ title }} screenshot"></div>
+        {%- endif %}
+        <div class="prose">
+{{ content | safe }}
+        </div>
+      </div>
+    </article>

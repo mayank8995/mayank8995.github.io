@@ -1,0 +1,194 @@
+---
+layout: base.njk
+permalink: /
+---
+{%- from "icons.njk" import icon, socials, projectLinks -%}
+{%- set c = site.contact -%}
+{%- set t = site.terminal -%}
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow reveal"><span class="pulse"></span>{{ site.availability }}</p>
+          <h1 class="reveal">{{ site.name }}<span class="role">{{ site.role }}</span></h1>
+          <p class="headline reveal">{{ site.headline }}</p>
+          <p class="intro reveal">{{ site.intro }}</p>
+          <div class="cta reveal">
+            <a href="#work" class="btn primary">See selected work {{ icon("arrow") | safe }}</a>
+            {%- if site.resumeUrl %}
+            <a href="{{ site.resumeUrl }}" class="btn ghost" target="_blank" rel="noopener">Download résumé</a>
+            {%- else %}
+            <a href="#contact" class="btn ghost">Get in touch</a>
+            {%- endif %}
+          </div>
+          <div class="hero-meta reveal">
+            {{ socials(c) }}
+            {%- if site.currently %}
+            <span class="currently">Currently {{ site.currently.role }} at
+              {% if site.currently.url %}<a href="{{ site.currently.url }}" target="_blank" rel="noopener">{{ site.currently.company }}</a>{% else %}<b>{{ site.currently.company }}</b>{% endif %}</span>
+            {%- endif %}
+          </div>
+        </div>
+
+        <div class="terminal reveal" aria-label="Profile summary">
+          <div class="term-bar"><i></i><i></i><i></i><span>zsh · ~/{{ site.name.split(" ")[0] | lower }}</span></div>
+          <pre class="term-body"><code><span class="t-prompt">~ $</span> cat profile.json
+<span class="t-p">{</span>
+  <span class="t-k">"name"</span>: <span class="t-s">"{{ site.name }}"</span>,
+  <span class="t-k">"role"</span>: <span class="t-s">"{{ site.role }}"</span>,
+  <span class="t-k">"location"</span>: <span class="t-s">"{{ site.location }}"</span>,
+  <span class="t-k">"focus"</span>: <span class="t-p">[</span>{% for f in t.focus %}
+    <span class="t-s">"{{ f }}"</span>{% if not loop.last %},{% endif %}{% endfor %}
+  <span class="t-p">]</span>,
+  <span class="t-k">"stack"</span>: <span class="t-p">[</span>{% for row in t.stack | batch(3) %}{% set outer = loop %}
+    {% for s in row %}<span class="t-s">"{{ s }}"</span>{% if not (outer.last and loop.last) %}, {% endif %}{% endfor %}{% endfor %}
+  <span class="t-p">]</span>,
+  <span class="t-k">"motto"</span>: <span class="t-s">"{{ t.principles }}"</span>
+<span class="t-p">}</span>
+<span class="t-prompt">~ $</span> <span class="t-cursor"></span></code></pre>
+        </div>
+      </div>
+
+      <div class="wrap">
+        <dl class="metrics reveal">
+          {%- for m in site.metrics %}
+          <div class="metric"><dt>{{ m.value }}</dt><dd>{{ m.label }}</dd></div>
+          {%- endfor %}
+        </dl>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="kicker">Experience</p>
+          <h2>Where I've made an impact</h2>
+        </header>
+        <ol class="timeline">
+          {%- for job in site.experience %}
+          <li class="job reveal">
+            <div class="job-when">
+              <span class="period">{{ job.period }}</span>
+              <span class="where">{{ job.location }}</span>
+            </div>
+            <div class="job-card card">
+              <h3>{{ job.role }} <span class="at">at {% if job.url %}<a href="{{ job.url }}" target="_blank" rel="noopener">{{ job.company }}</a>{% else %}{{ job.company }}{% endif %}</span></h3>
+              <p class="job-summary">{{ job.summary }}</p>
+              {%- if job.highlights.length %}
+              <ul class="wins">
+                {%- for h in job.highlights %}<li>{{ h }}</li>{%- endfor %}
+              </ul>
+              {%- endif %}
+              <div class="tags">{% for s in job.stack %}<span class="tag">{{ s }}</span>{% endfor %}</div>
+            </div>
+          </li>
+          {%- endfor %}
+        </ol>
+      </div>
+    </section>
+
+    <!-- SELECTED WORK -->
+    <section id="work" class="section">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="kicker">Selected work</p>
+          <h2>Interfaces I've designed and shipped</h2>
+          <p class="sub">Open any project for the full case study: the problem, the UI architecture, and the results.</p>
+        </header>
+        {%- set allTags = collections.projects | uniqueTags %}
+        {%- if allTags.length > 1 and collections.projects.length > 3 %}
+        <div class="filters reveal" id="filters">
+          <button class="filter active" data-tag="All">All</button>
+          {%- for tg in allTags %}<button class="filter" data-tag="{{ tg }}">{{ tg }}</button>{% endfor %}
+        </div>
+        {%- endif %}
+        <div class="projects" id="projectsGrid">
+          {%- for p in collections.projects %}
+          {%- set d = p.data %}
+          <article class="card project reveal{% if d.featured %} is-featured{% endif %}" data-tags='{{ (d.tags or []) | json }}'>
+            <div class="thumb{% if not d.image %} placeholder{% endif %}" style="--hue: {{ (loop.index0 * 67 + 250) % 360 }}">
+              {%- if d.image %}<img src="{{ d.image }}" alt="{{ d.title }} screenshot" loading="lazy">{% else %}<span class="thumb-label">{{ p.fileSlug }}</span>{% endif %}
+              {%- if d.featured %}<span class="featured">Featured</span>{% endif %}
+            </div>
+            <div class="project-body">
+              <p class="project-meta">{% if d.role %}{{ d.role }}{% endif %}{% if d.role and d.year %} · {% endif %}{% if d.year %}{{ d.year }}{% endif %}</p>
+              <h3><a class="project-title-link" href="{{ p.url }}">{{ d.title }}</a></h3>
+              <p class="project-desc">{{ d.description }}</p>
+              {%- if d.impact %}
+              <div class="impact">
+                {%- for im in d.impact %}<div><b>{{ im.value }}</b><span>{{ im.label }}</span></div>{% endfor %}
+              </div>
+              {%- endif %}
+              <div class="tags">{% for tg in d.tags %}<span class="tag">{{ tg }}</span>{% endfor %}</div>
+              <div class="project-foot">
+                <span class="read">Read case study {{ icon("arrow") | safe }}</span>
+                {{ projectLinks(d) }}
+              </div>
+            </div>
+          </article>
+          {%- endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERTISE -->
+    <section id="expertise" class="section">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="kicker">Expertise</p>
+          <h2>What I bring to a team</h2>
+        </header>
+        <div class="expertise">
+          {%- for g in site.expertise %}
+          <div class="card skill reveal" style="transition-delay:{{ loop.index0 * 70 }}ms">
+            <span class="skill-num">0{{ loop.index }}</span>
+            <h3>{{ g.title }}</h3>
+            <p>{{ g.description }}</p>
+            <div class="tags">{% for it in g.items %}<span class="tag">{{ it }}</span>{% endfor %}</div>
+          </div>
+          {%- endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="wrap about">
+        <div class="reveal">
+          <p class="kicker">About</p>
+          <h2 class="about-title">Craft meets engineering.</h2>
+          {%- for para in site.about %}
+          <p class="about-p">{{ para }}</p>
+          {%- endfor %}
+          <div class="meta">
+            {%- if site.location %}<span class="chip">{{ icon("pin") | safe }}{{ site.location }}</span>{% endif %}
+            <span class="chip">{{ site.role }}</span>
+          </div>
+        </div>
+        <div class="principles reveal">
+          <p class="principles-title">How I work</p>
+          {%- for pr in site.principles %}
+          <div class="principle">
+            <span>{{ loop.index }}</span>
+            <div><h3>{{ pr.title }}</h3><p>{{ pr.text }}</p></div>
+          </div>
+          {%- endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="wrap">
+        <div class="contact reveal">
+          <p class="kicker center"><span>05</span> Contact</p>
+          <h2>Building something people will love to use?</h2>
+          <p>I'm open to mid and senior frontend roles, and always happy to talk React, design systems, performance or accessibility.</p>
+          <div class="cta center">
+            <a class="btn primary big" href="{{ ('mailto:' + c.email) if c.email else '#contact' }}">{{ icon("email") | safe }} {{ c.email or "Say hello" }}</a>
+          </div>
+          {{ socials(c, "center") }}
+        </div>
+      </div>
+    </section>

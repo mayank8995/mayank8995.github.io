@@ -1,0 +1,161 @@
+{
+  "name": "Mayank Gupta",
+  "role": "Senior Frontend Engineer",
+  "url": "https://mayank8995.github.io",
+  "description": "Mayank Gupta, Senior Frontend Engineer. I build fast, accessible web apps and the design systems behind them.",
+  "location": "India",
+  "availability": "Open to mid and senior level frontend roles",
+  "resumeUrl": "",
+
+  "headline": "I build fast, accessible interfaces, and the design systems that let teams ship them.",
+  "intro": "Senior frontend engineer specialising in React, TypeScript and web performance. I focus on UI architecture end to end, from component APIs and state management to Core Web Vitals in production, and I work closely with design to turn ideas into polished products.",
+
+  "currently": {
+    "role": "Full Stack Engineer",
+    "company": "Freelancing",
+    "url": ""
+  },
+
+  "terminal": {
+    "focus": [
+      "UI architecture",
+      "Design systems",
+      "Web performance",
+      "Accessibility"
+    ],
+    "stack": ["React", "TypeScript", "JavaScript", "Tailwind", "Jest"],
+    "principles": "Fast by default. Accessible by default."
+  },
+
+  "metrics": [
+    { "value": "~6", "label": "Years building for the web" },
+    { "value": "95+", "label": "Lighthouse performance on apps I've shipped" },
+    { "value": "15M+", "label": "Monthly users on interfaces I've built" }
+  ],
+
+  "experience": [
+    {
+      "role": "Full Stack Engineer",
+      "company": "Freelancing",
+      "url": "",
+      "period": "2024 to present",
+      "location": "Bengaluru, India",
+      "summary": "Full stack developer building scalable applications",
+      "highlights": [
+        "Built and deployed a multi-user RAG notes assistant (React, Node/Express, MongoDB Atlas Vector Search) with per-user retrieval filtering, streaming answers, Firebase Auth.",
+        " Integrated an LLM-powered chat assistant (OpenAI Responses API) behind a provider-agnostic wrapper. Hardened the assistant against prompt injection using layered instruction-level and mechanical controls, with server-side validation and sanitization of client-supplied conversation history",
+        "Workforce management dashboard supporting role-based access, employee directory, analytics & insights, project tracking."
+      ],
+      "stack": [
+        "React",
+        "TypeScript",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "LLM",
+        "RAG",
+        "MCP"
+      ]
+    },
+    {
+      "role": "Senior Software Enginner - Frontend",
+      "company": "Airtel Digital",
+      "url": "",
+      "period": "Feb 2022 to Feb 2024",
+      "location": "Bengaluru",
+      "summary": "Worked as an individual contributor, building scalable React and React Native applications across Airtel's digital platforms, developing reusable cross-vertical solutions, improving application performance, and delivering high-impact customer-facing experiences.",
+      "highlights": [
+        "Built a shared location-capture and serviceability module adopted across Airtel verticals, eliminating duplicate builds and reducing GTM time by 35%",
+        "Developed a workflow management tool enabling multiple business verticals to manage customer milestones, reducing GTM turnaround time by 30%",
+        "Built a unified mobility onboarding journey for prepaid, postpaid, and broadband products, increasing customer footprint by 20%",
+        "Migrated a high-traffic Airtel Shop module to React Native, supporting 36.5K+ daily transactions and 15M+ monthly active users",
+        "Optimized application performance through bundle splitting and efficient rendering, reducing LCP by 32% and FCP by 21%",
+        "Implemented Firebase A/B testing to analyze user clicks and impressions, enabling data-driven product decisions"
+      ],
+      "stack": [
+        "React",
+        "Redux",
+        "Typescript",
+        "React Native",
+        "Jest",
+        "React testing library",
+        "MongoDB",
+        "Node.js"
+      ]
+    },
+    {
+      "role": "Associate Experience Technology L2",
+      "company": "Publicis Sapient",
+      "url": "",
+      "period": "Feb 2021 to Feb 2022",
+      "location": "Gurgaon, India",
+      "summary": "Delivered client-facing web platforms in a global digital consultancy, collaborating with client stakeholders across discovery, development, testing, and release cycles.",
+      "highlights": [
+        "Designed, developed, tested, and maintained high-performance React applications while following engineering best practices and conducting peer code reviews",
+        "Resolved defects in a shared design system used across multiple business verticals, improving component stability and enabling reuse across partner teams",
+        "Built reusable and configurable UI components, including data tables, data views, complex charts, dynamic templates, forms, and card-based interfaces, accelerating feature development across applications",
+        "Collaborated with client stakeholders and cross-functional teams in an Agile delivery model to deliver scalable web solutions"
+      ],
+      "stack": ["React", "Typescript", "SCSS", "HTML", "CSS", "Redux"]
+    },
+    {
+      "role": "Senior Software Engineer",
+      "company": "Newgen Software",
+      "url": "",
+      "period": "Jul 2018 to Feb 2021",
+      "location": "Noida, India",
+      "summary": "Contributed to enterprise workflow automation and correspondence management products across government and banking domains, building responsive React applications, developing client-facing proof-of-concepts, and enhancing core product functionality.",
+      "highlights": [
+        "Contributed to a core workflow automation product used across government and banking domains, supporting end-to-end process automation and improving operational efficiency",
+        "Developed React.js proof-of-concepts for major national and international client engagements, contributing to new business opportunities",
+        "Built responsive, cross-browser user interfaces for desktop, tablet, and mobile while following accessibility best practices",
+        "Maintained and enhanced CORMS (Correspondence Management System) across multiple modules, contributing to core product functionality and improvements"
+      ],
+      "stack": ["React", "Typescript", "Angular", "Java", "SQL"]
+    }
+  ],
+
+  "expertise": [
+    {
+      "title": "UI architecture",
+      "description": "Scalable React apps: component APIs, state, data fetching and rendering strategies that hold up as teams grow.",
+      "items": ["React", "TypeScript", "Redux", "Tanstack Query"]
+    },
+    {
+      "title": "Performance & accessibility",
+      "description": "Core Web Vitals, bundle budgets and WCAG, measured in CI and in real user data.",
+      "items": ["Lighthouse", "Web Vitals", "WCAG", "ARIA", "Webpack/Vite"]
+    },
+    {
+      "title": "Quality & tooling",
+      "description": "Testing and tooling that let a team ship UI changes daily with confidence.",
+      "items": ["Jest", "Testing Library"]
+    }
+  ],
+
+  "about": [
+    "I'm Mayank, a senior frontend engineer who sits between design and engineering. I love taking a rough idea and turning it into an interface that feels instant, works for everyone, and is a pleasure to maintain."
+  ],
+
+  "principles": [
+    {
+      "title": "Users feel performance",
+      "text": "Every 100ms counts. I set budgets and measure real-user data, not just lab scores."
+    },
+    {
+      "title": "Accessible from day one",
+      "text": "Keyboard, screen readers and contrast are part of done, not a later ticket."
+    },
+    {
+      "title": "Components are products",
+      "text": "Good APIs, docs and examples make a design system something teams want to use."
+    }
+  ],
+
+  "contact": {
+    "email": "mayankgupta8995@gmail.com",
+    "github": "https://github.com/mayank8995",
+    "leetcode": "https://leetcode.com/u/mayank8995/",
+    "linkedin": "https://www.linkedin.com/in/mgupta8995/"
+  }
+}
