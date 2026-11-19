@@ -9,7 +9,7 @@ impact:
     { value: "Live", label: "real-time sync across sessions" },
     { value: "RBAC", label: "role-based access + audit logs" },
   ]
-live: ""
+live: "https://advance-dashboard.onrender.com/"
 code: https://github.com/mayank8995/workforce-management-portal
 image: ""
 featured: true
